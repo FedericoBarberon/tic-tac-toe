@@ -1,0 +1,7 @@
+@mixin pointer {
+  cursor: pointer;
+
+  @media (pointer: coarse) {
+    cursor: default;
+  }
+}
