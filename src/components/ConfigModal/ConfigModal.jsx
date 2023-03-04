@@ -4,12 +4,12 @@ import CloseIcon from '../../assets/icons/CloseIcon.svg'
 import { useConfig } from '../../hooks/useConfig'
 import './configModal.scss'
 
-export default function ConfigModal({ handleClose }) {
+export default function ConfigModal ({ handleClose }) {
   const { avatars, changeAvatars } = useConfig()
 
   const handleAvatarChange = (event) => {
     event.preventDefault()
-    
+
     const p1 = event.target.p1.value
     const p2 = event.target.p2.value
 
