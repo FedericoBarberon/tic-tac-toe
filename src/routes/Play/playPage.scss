@@ -1,0 +1,18 @@
+@use "../../sass/utils/functions" as f;
+
+.turn {
+  display: flex;
+  align-items: center;
+  gap: f.rem(10);
+  background-color: var(--yellow);
+  border-radius: f.rem(4);
+  color: #000;
+  padding: f.rem(10);
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: f.rem(50);
+  }
+}

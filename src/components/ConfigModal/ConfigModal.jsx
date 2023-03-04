@@ -14,6 +14,7 @@ export default function ConfigModal ({ handleClose }) {
     const p2 = event.target.p2.value
 
     changeAvatars({ p1, p2 })
+    handleClose()
   }
 
   return (

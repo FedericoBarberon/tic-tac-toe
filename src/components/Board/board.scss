@@ -1,0 +1,21 @@
+@use "../../sass/utils/functions" as f;
+
+.board {
+  width: min(90%, f.rem(500));
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  gap: f.rem(16);
+
+  .cell {
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--yellow);
+    // font-size: clamp(f.rem(48), f.rem(48) + 2vw, f.rem(80));
+    font-size: f.rem(70);
+    color: #000;
+    user-select: none;
+    border: none;
+  }
+}
