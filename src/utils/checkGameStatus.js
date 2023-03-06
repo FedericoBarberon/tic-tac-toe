@@ -1,12 +1,17 @@
+import { gameStatus } from '../constants/gameStatus'
 import { winningCombinations } from '../constants/winningCombinations'
 
-export const checkGameEnds = (board, turn) => {
+export const checkGameStatus = (board, turn) => {
+  let status = gameStatus.playing
+
   winningCombinations.forEach(combo => {
     if (combo.every(index => board[index] === turn)) {
-      console.log(`${turn} wins!`)
+      status = gameStatus.win
     }
   })
   if (board.every(Boolean)) {
-    console.log('draw')
+    status = gameStatus.draw
   }
+
+  return status
 }

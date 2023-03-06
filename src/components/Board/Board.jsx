@@ -1,5 +1,6 @@
 import { useGame } from '../../hooks/useGame'
 import { useConfig } from '../../hooks/useConfig'
+import { gameStatus } from '../../constants/gameStatus'
 import './board.scss'
 
 export default function Board () {
@@ -7,7 +8,7 @@ export default function Board () {
   const { avatars } = useConfig()
 
   const handleMarkCell = (cellIndex) => {
-    if (state.board[cellIndex]) return
+    if (state.board[cellIndex] || state.status !== gameStatus.playing) return
 
     markCell(cellIndex)
   }

@@ -3,8 +3,9 @@
 .board {
   width: min(90%, f.rem(500));
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  gap: f.rem(16);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: f.rem(8);
 
   .cell {
     aspect-ratio: 1/1;
@@ -12,9 +13,8 @@
     justify-content: center;
     align-items: center;
     background-color: var(--yellow);
-    // font-size: clamp(f.rem(48), f.rem(48) + 2vw, f.rem(80));
-    font-size: f.rem(70);
-    color: #000;
+    font-size: clamp(f.rem(48), f.rem(30) + 4vw, f.rem(80));
+    color: var(--dark-blue);
     user-select: none;
     border: none;
   }

@@ -7,6 +7,13 @@
   gap: f.rem(16);
 }
 
+.f-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: f.rem(16);
+}
+
 .button {
   border: none;
   border-radius: f.rem(4);

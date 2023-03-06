@@ -1,8 +1,8 @@
 import ModalCard from '../ModalCard/ModalCard'
 import ConfigIcon from '../../assets/icons/ConfigIcon.svg'
-import CloseIcon from '../../assets/icons/CloseIcon.svg'
 import { useConfig } from '../../hooks/useConfig'
 import './configModal.scss'
+import Close from '../Close/Close'
 
 export default function ConfigModal ({ handleClose }) {
   const { avatars, changeAvatars } = useConfig()
@@ -22,9 +22,7 @@ export default function ConfigModal ({ handleClose }) {
       <header>
         <img src={ConfigIcon} alt='Config Icon' />
         <h2>Configuration</h2>
-        <button className='close' title='Close' onClick={handleClose}>
-          <img src={CloseIcon} alt='Close' />
-        </button>
+        <Close handleClose={handleClose} />
       </header>
 
       <form className='players-form' onSubmit={handleAvatarChange}>

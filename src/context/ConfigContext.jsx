@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from 'react'
 export const ConfigContext = createContext()
 
 export default function ConfigProvider ({ children }) {
-  const [avatars, setAvatars] = useState({ p1: 'X', p2: 'O' })
+  const [avatars, setAvatars] = useState({ p1: '❌', p2: '🔵' })
 
   const changeAvatars = (newAvatars) => {
     setAvatars(newAvatars)

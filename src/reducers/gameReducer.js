@@ -1,15 +1,17 @@
 import { players } from '../constants/players'
+import { gameStatus } from '../constants/gameStatus'
 import { changeTurn } from '../utils/changeTurn'
-import { checkGameEnds } from '../utils/checkGameEnds'
+import { checkGameStatus } from '../utils/checkGameStatus'
 
 export const initialState = {
-  gameStarted: 'true',
   turn: players.p1,
-  board: Array(9).fill(null)
+  board: Array(9).fill(null),
+  status: gameStatus.playing
 }
 
 export const actions = {
-  MARK_CELL: 'MARK_CELL'
+  MARK_CELL: 'MARK_CELL',
+  RESET_GAME: 'RESET_GAME'
 }
 
 export const gameReducer = (state, action) => {
@@ -17,14 +19,21 @@ export const gameReducer = (state, action) => {
 
   switch (type) {
     case actions.MARK_CELL: {
+      const { cellIndex } = payload
       const newBoard = [...state.board]
-      newBoard[payload.cellIndex] = state.turn
+      newBoard[cellIndex] = state.turn
 
-      checkGameEnds(newBoard, state.turn)
+      const status = checkGameStatus(newBoard, state.turn)
 
-      const nextTurn = changeTurn(state.turn)
+      if (status === gameStatus.playing) {
+        const nextTurn = changeTurn(state.turn)
 
-      return { ...state, board: newBoard, turn: nextTurn }
+        return { ...state, board: newBoard, turn: nextTurn }
+      }
+
+      return { ...state, board: newBoard, status }
     }
+
+    case actions.RESET_GAME: return initialState
   }
 }
