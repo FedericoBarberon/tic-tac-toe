@@ -29,11 +29,11 @@ export default function ConfigModal ({ handleClose }) {
         <h3>Avatars</h3>
         <label>
           Player 1
-          <input defaultValue={avatars.p1} name='p1' minLength={1} maxLength={2} placeholder='X' />
+          <input defaultValue={avatars.p1} name='p1' minLength={1} maxLength={2} placeholder='X' required />
         </label>
         <label>
           Player 2
-          <input defaultValue={avatars.p2} name='p2' minLength={1} maxLength={2} placeholder='O' />
+          <input defaultValue={avatars.p2} name='p2' minLength={1} maxLength={2} placeholder='O' required />
         </label>
 
         <button className='button'>Save</button>
