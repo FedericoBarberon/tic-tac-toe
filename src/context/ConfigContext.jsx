@@ -1,27 +1,12 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export const ConfigContext = createContext()
 
 export default function ConfigProvider ({ children }) {
-  const [avatars, setAvatars] = useState({ p1: '❌', p2: '🔵' })
+  const [avatars, setAvatars] = useLocalStorage('avatars', { p1: '❌', p2: '🔵' })
 
-  const changeAvatars = (newAvatars) => {
-    setAvatars(newAvatars)
-
-    const avatarsString = JSON.stringify(newAvatars)
-    window.localStorage.setItem('avatars', avatarsString)
-  }
-
-  useEffect(() => {
-    const avatarsFromLS = JSON.parse(window.localStorage.getItem('avatars'))
-
-    if (!avatarsFromLS) {
-      const avatarsString = JSON.stringify(avatars)
-      window.localStorage.setItem('avatars', avatarsString)
-    } else {
-      setAvatars(avatarsFromLS)
-    }
-  }, [])
+  const changeAvatars = (newAvatars) => setAvatars(newAvatars)
 
   return (
     <ConfigContext.Provider value={{ avatars, changeAvatars }}>
