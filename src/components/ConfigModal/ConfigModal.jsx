@@ -23,7 +23,7 @@ export default function ConfigModal ({ handleClose }) {
   return (
     <ModalCard>
       <header>
-        <img src={ConfigIcon} alt='Config Icon' />
+        <img src={ConfigIcon} alt='Config Icon' className='icon' />
         <h2>Configuration</h2>
         <Close handleClose={handleClose} />
       </header>

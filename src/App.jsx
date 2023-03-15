@@ -2,6 +2,7 @@ import HomePage from './routes/Home/HomePage'
 import PlayPage from './routes/Play/PlayPage'
 import MultiplayerPage from './routes/Multiplayer/MultiplayerPage'
 import GameProvider from './context/GameContext'
+import MultiplayerProvider from './context/MultiplayerContext'
 import { Route } from 'wouter'
 import './app.scss'
 
@@ -19,7 +20,9 @@ export default function App () {
       </Route>
 
       <Route path='/multiplayer'>
-        <MultiplayerPage />
+        <MultiplayerProvider>
+          <MultiplayerPage />
+        </MultiplayerProvider>
       </Route>
     </div>
   )

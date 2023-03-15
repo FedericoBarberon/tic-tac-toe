@@ -1,0 +1,75 @@
+@use "../../sass/utils/functions" as f;
+
+.multiplayerPage {
+  height: 90vh;
+
+  h1 {
+    font-size: f.rem(40);
+  }
+
+  .rooms-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: f.rem(16);
+    background-color: var(--white);
+    color: var(--dark-blue);
+    padding: f.rem(20);
+    border-radius: f.rem(8);
+    width: min(90%, f.rem(500));
+    height: 80%;
+
+    header {
+      display: flex;
+      gap: f.rem(8);
+    }
+
+    div {
+      display: flex;
+      gap: f.rem(8);
+
+      input {
+        flex-grow: 1;
+      }
+
+      .button {
+        font-size: f.rem(14);
+      }
+    }
+
+    label {
+      display: flex;
+      gap: f.rem(8);
+    }
+
+    .rooms {
+      list-style-type: none;
+      border: f.rem(1) solid black;
+      background-color: #fff;
+      overflow-y: auto;
+
+      .room {
+        display: flex;
+        align-items: center;
+        gap: f.rem(10);
+        padding: f.rem(8);
+        border-bottom: f.rem(1) solid black;
+
+        span {
+          flex-grow: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: bold;
+        }
+
+        .button {
+          font-size: f.rem(14);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

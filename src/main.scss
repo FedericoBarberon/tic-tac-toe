@@ -1,5 +1,6 @@
 @forward "./sass/colors";
 @forward "./sass/globals";
+@use "./sass/utils/functions" as f;
 
 * {
   margin: 0;
@@ -17,4 +18,18 @@ a {
   color: inherit;
   text-decoration: none;
   text-align: center;
+}
+
+input {
+  font-size: inherit;
+  border: 1px solid black;
+  padding: f.rem(8);
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #00000055;
+  }
 }
