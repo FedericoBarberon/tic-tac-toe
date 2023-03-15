@@ -16,6 +16,9 @@ export default function HomePage () {
         <Link href='/play'>
           <a className='button'>Play</a>
         </Link>
+        <Link href='/multiplayer'>
+          <a className='button'>Multiplayer</a>
+        </Link>
         <button className='button' onClick={handleOpen}>Config</button>
       </div>
       {showConfig && <ConfigModal handleClose={handleClose} />}
