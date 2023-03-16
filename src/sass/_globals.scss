@@ -55,6 +55,10 @@
   flex-direction: column;
   gap: f.rem(16);
 
+  .error {
+    color: red;
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;

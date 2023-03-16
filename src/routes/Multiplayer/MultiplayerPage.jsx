@@ -1,28 +1,40 @@
 import { useMultiplayer } from '../../hooks/useMultiplayer'
 import { useMemo, useState } from 'react'
 import { filterRooms } from '../../utils/filterRooms'
+import { Link } from 'wouter'
 import CreateRoomModal from '../../components/CreateRoomModal/CreateRoomModal'
 import PrivateRoomIcon from '../../assets/icons/PrivateRoomIcon.svg'
 import GroupIcon from '../../assets/icons/GroupIcon.svg'
 import BackIcon from '../../assets/icons/BackIcon.svg'
 import './multiplayerPage.scss'
-import { Link } from 'wouter'
+import JoinPrivateRoomModal from '../../components/JoinPrivateRoomModal/JoinPrivateRoomModal'
 
 export default function MultiplayerPage () {
-  const { rooms } = useMultiplayer()
+  const { rooms, joinRoom } = useMultiplayer()
   const [showCreateRoomModal, setShowCreateRoomModal] = useState(false)
+  const [joinPrivateRoomModal, setJoinPrivateRoomModal] = useState({ show: false, room: null })
   const [filters, setFilters] = useState({ search: '', onlyPublics: false })
   const filteredRooms = useMemo(() => filterRooms(rooms, filters), [rooms, filters])
 
   const openCreateRoomModal = () => setShowCreateRoomModal(true)
   const closeCreateRoomModal = () => setShowCreateRoomModal(false)
 
+  const closeJoinPrivateRoomModal = () => setJoinPrivateRoomModal({ show: false, room: null })
+
   const handleSearchChange = (e) => {
     setFilters(prevFilters => ({ ...prevFilters, search: e.target.value }))
   }
 
-  const handleOnlyPublicsChange = (e) => {
+  const handleOnlyPublicsChange = () => {
     setFilters(prevFilters => ({ ...prevFilters, onlyPublics: !prevFilters.onlyPublics }))
+  }
+
+  const handleJoin = (room) => {
+    if (room.private) {
+      setJoinPrivateRoomModal({ show: true, room })
+    } else {
+      joinRoom(room)
+    }
   }
 
   return (
@@ -58,7 +70,7 @@ export default function MultiplayerPage () {
                   <li key={room.id} className='room'>
                     <span>{room.name}</span>
                     {room.private && <img src={PrivateRoomIcon} alt='Private' title='Private Room' className='icon' />}
-                    <button className='button'>Join</button>
+                    <button className='button' onClick={() => handleJoin(room)}>Join</button>
                   </li>
                 ))}
               </ul>
@@ -68,6 +80,7 @@ export default function MultiplayerPage () {
       </section>
 
       {showCreateRoomModal && <CreateRoomModal handleClose={closeCreateRoomModal} />}
+      {joinPrivateRoomModal.show && <JoinPrivateRoomModal room={joinPrivateRoomModal.room} handleClose={closeJoinPrivateRoomModal} />}
     </div>
   )
 }

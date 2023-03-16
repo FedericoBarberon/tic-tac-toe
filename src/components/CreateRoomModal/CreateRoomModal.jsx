@@ -54,7 +54,7 @@ export default function CreateRoomModal ({ handleClose }) {
           <h3>Room Config</h3>
           <label className='input-label'>
             Name
-            <input name='name' placeholder='Enter the room´s name' value={formValues.name} onChange={handleInputChange} required />
+            <input name='name' placeholder='Enter the room´s name' value={formValues.name} onChange={handleInputChange} maxLength={20} required />
           </label>
 
           <label className='input-label'>
@@ -65,7 +65,7 @@ export default function CreateRoomModal ({ handleClose }) {
           {formValues.private && (
             <label className='input-label'>
               Password
-              <input name='password' placeholder='Enter a password' type='password' value={formValues.password} onChange={handleInputChange} />
+              <input name='password' placeholder='Enter a password' value={formValues.password} onChange={handleInputChange} />
             </label>
           )}
         </div>
