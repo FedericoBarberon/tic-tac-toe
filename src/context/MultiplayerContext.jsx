@@ -1,34 +1,17 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 
 export const MultiplayerContext = createContext()
-
-const mockupRooms = [
-  {
-    name: 'Biggie room',
-    id: 1,
-    private: true
-  },
-  {
-    name: 'My Room',
-    id: 2,
-    private: false
-  },
-  {
-    name: 'I always win',
-    id: 3,
-    private: true
-  }
-]
 
 export default function MultiplayerProvider ({ children }) {
   const [rooms, setRooms] = useState([])
 
-  useEffect(() => {
-    setRooms(mockupRooms)
-  }, [])
+  const createRoom = (room) => {
+    room.id = window.crypto.randomUUID()
+    setRooms(prevRooms => [...prevRooms, room])
+  }
 
   return (
-    <MultiplayerContext.Provider value={{ rooms }}>
+    <MultiplayerContext.Provider value={{ rooms, createRoom }}>
       {children}
     </MultiplayerContext.Provider>
   )

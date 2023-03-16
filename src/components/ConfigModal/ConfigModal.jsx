@@ -1,7 +1,6 @@
 import ModalCard from '../ModalCard/ModalCard'
 import ConfigIcon from '../../assets/icons/ConfigIcon.svg'
 import { useConfig } from '../../hooks/useConfig'
-import './configModal.scss'
 import Close from '../Close/Close'
 
 export default function ConfigModal ({ handleClose }) {
@@ -43,7 +42,7 @@ export default function ConfigModal ({ handleClose }) {
 
         <div className='form-group'>
           <h3>Multiplayer</h3>
-          <label className='multiplayerName-input-label'>
+          <label className='input-label'>
             Player Name
             <input defaultValue={multiplayerName} name='playerName' minLength={3} maxLength={20} placeholder='Enter your player name' required />
           </label>
