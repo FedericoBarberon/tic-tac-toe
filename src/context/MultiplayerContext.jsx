@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { useLocation } from 'wouter'
+import { useNavigate } from 'react-router-dom'
 
 export const MultiplayerContext = createContext()
 
@@ -7,7 +7,7 @@ export default function MultiplayerProvider ({ children }) {
   const [rooms, setRooms] = useState([])
   const [joinedRoom, setJoinedRoom] = useState()
 
-  const [, setLocation] = useLocation()
+  const navigate = useNavigate()
 
   const createRoom = (room) => {
     room.id = window.crypto.randomUUID()
@@ -20,7 +20,7 @@ export default function MultiplayerProvider ({ children }) {
     }
 
     setJoinedRoom(room)
-    setLocation('multiplayer/play')
+    navigate('multiplayer/play')
   }
 
   return (

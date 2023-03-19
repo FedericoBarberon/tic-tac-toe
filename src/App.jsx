@@ -4,22 +4,34 @@ import MultiplayerPage from './routes/Multiplayer/MultiplayerPage'
 import MultiplayerPlayPage from './routes/MultiplayerPlay/MultiplayerPlayPage'
 import GameProvider from './context/GameContext'
 import MultiplayerProvider from './context/MultiplayerContext'
-import { Route } from 'wouter'
+import { Outlet, Route, Routes } from 'react-router-dom'
 import './app.scss'
 
 export default function App () {
   return (
     <div className='App'>
-      <Route path='/' component={HomePage} />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
 
-      <GameProvider>
-        <Route path='/play' component={PlayPage} />
-      </GameProvider>
+        <Route
+          path='/play' element={
+            <GameProvider>
+              <PlayPage />
+            </GameProvider>
+        }
+        />
 
-      <MultiplayerProvider>
-        <Route path='/multiplayer' component={MultiplayerPage} />
-        <Route path='/multiplayer/play' component={MultiplayerPlayPage} />
-      </MultiplayerProvider>
+        <Route
+          element={
+            <MultiplayerProvider>
+              <Outlet />
+            </MultiplayerProvider>
+        }
+        >
+          <Route path='multiplayer' element={<MultiplayerPage />} />
+          <Route path='multiplayer/play' element={<MultiplayerPlayPage />} />
+        </Route>
+      </Routes>
     </div>
   )
 }

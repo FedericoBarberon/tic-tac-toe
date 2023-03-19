@@ -1,9 +1,9 @@
 import Board from '../../components/Board/Board'
-import { Link } from 'wouter'
 import { useConfig } from '../../hooks/useConfig'
 import { useGame } from '../../hooks/useGame'
 import EndGameModal from '../../components/EndGameModal/EndGameModal'
 import './playPage.scss'
+import { Link } from 'react-router-dom'
 
 export default function PlayPage () {
   const { state, resetGame } = useGame()
@@ -13,9 +13,7 @@ export default function PlayPage () {
     <div className='container'>
       <Board />
       <div className='f-row'>
-        <Link href='/'>
-          <a className='button'>Exit</a>
-        </Link>
+        <Link to='/' className='button'>Exit</Link>
         <h2 className='turn'>
           <span>{avatars[state.turn]}</span>
           Turn

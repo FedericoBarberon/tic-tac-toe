@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import { gameStatus } from '../../constants/gameStatus'
 import { useConfig } from '../../hooks/useConfig'
 import { useGame } from '../../hooks/useGame'
@@ -32,9 +32,7 @@ export default function EndGameModal () {
       </header>
       <div className='f-row'>
         <button className='button' onClick={resetGame}>Play Again</button>
-        <Link href='/'>
-          <a className='button'>Exit</a>
-        </Link>
+        <Link to='/' className='button'>Exit</Link>
       </div>
     </ModalCard>
   )

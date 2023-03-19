@@ -1,13 +1,13 @@
 import { useMultiplayer } from '../../hooks/useMultiplayer'
 import { useMemo, useState } from 'react'
 import { filterRooms } from '../../utils/filterRooms'
-import { Link } from 'wouter'
 import CreateRoomModal from '../../components/CreateRoomModal/CreateRoomModal'
 import PrivateRoomIcon from '../../assets/icons/PrivateRoomIcon.svg'
 import GroupIcon from '../../assets/icons/GroupIcon.svg'
 import BackIcon from '../../assets/icons/BackIcon.svg'
 import './multiplayerPage.scss'
 import JoinPrivateRoomModal from '../../components/JoinPrivateRoomModal/JoinPrivateRoomModal'
+import { Link } from 'react-router-dom'
 
 export default function MultiplayerPage () {
   const { rooms, joinRoom } = useMultiplayer()
@@ -45,10 +45,8 @@ export default function MultiplayerPage () {
         <header>
           <img src={GroupIcon} alt='Group Icon' className='icon' />
           <h2>Rooms</h2>
-          <Link href='/'>
-            <a>
-              <img src={BackIcon} alt='Back Icon' title='Back' className='icon' />
-            </a>
+          <Link to='/'>
+            <img src={BackIcon} alt='Back Icon' title='Back' className='icon' />
           </Link>
         </header>
 
